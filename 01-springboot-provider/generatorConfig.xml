@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--     <properties resource="house-center-do/src/main/resources/config.properties"/> -->
+    <classPathEntry
+            location="E:\WorkSpace\maven\maven_home\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar" />
+    <context id="mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.easyspringboot.mapper"/>
+            <property name="caseSensitive" value="true"/>
+            <!--             <property name="beginningDelimiter" value="`"/> -->
+            <!--             <property name="endingDelimiter" value="`"/> -->
+        </plugin>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/jr_user?characterEncoding=utf8&amp;useSSL=false"
+                        userId="root" password="test12345" />
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.easyspringboot.domain" targetProject="./src/main/java"/>
+        <sqlMapGenerator targetPackage="com.easyspringboot.mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.easyspringboot.mapper" targetProject="./src/main/java" type="XMLMAPPER"/>
+        <!--    数据库　表名　生成名 -->
+        <table tableName="user_info" domainObjectName="UserInfo">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <!-- 新增end   -->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easyspringboot.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="UserInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="pay_password" property="payPassword" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="id_type" property="idType" jdbcType="VARCHAR" />
+    <result column="card_number" property="cardNumber" jdbcType="VARCHAR" />
+    <result column="card_name" property="cardName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="join_time" property="joinTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="risk_level" property="riskLevel" jdbcType="TINYINT" />
+    <result column="invite_code" property="inviteCode" jdbcType="VARCHAR" />
+    <result column="is_robot" property="isRobot" jdbcType="BIT" />
+    <result column="is_auth_name" property="isAuthName" jdbcType="BIT" />
+    <result column="is_binding_bankcard" property="isBindingBankcard" jdbcType="BIT" />
+    <result column="is_set_pay_pwd" property="isSetPayPwd" jdbcType="BIT" />
+    <result column="is_binding_email" property="isBindingEmail" jdbcType="BIT" />
+    <result column="is_buy_lending" property="isBuyLending" jdbcType="BIT" />
+    <result column="login_password_complex" property="loginPasswordComplex" jdbcType="TINYINT" />
+    <result column="auth_time" property="authTime" jdbcType="TIMESTAMP" />
+    <result column="user_truename" property="userTruename" jdbcType="VARCHAR" />
+    <result column="self_invite_code" property="selfInviteCode" jdbcType="VARCHAR" />
+    <result column="qr_code_url" property="qrCodeUrl" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="account_status" property="accountStatus" jdbcType="INTEGER" />
+    <result column="ele_acct_no" property="eleAcctNo" jdbcType="VARCHAR" />
+    <result column="ele_acct_no_open_time" property="eleAcctNoOpenTime" jdbcType="TIMESTAMP" />
+    <result column="pay_channel" property="payChannel" jdbcType="VARCHAR" />
+    <result column="binding_time" property="bindingTime" jdbcType="TIMESTAMP" />
+    <result column="buy_num" property="buyNum" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="selectUserByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select  * from jr_user.user_info
+    limit #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType="INTEGER"}
+  </select>
+
+  <select id="selectUserByTotal" parameterType="java.lang.Integer" >
+    select  count (*) from jr_user.user_info
+  </select>
+</mapper>
